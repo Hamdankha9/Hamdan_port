@@ -1,4 +1,4 @@
-﻿
+
 :root {
   --bg: #f5f2ec;
   --bg2: #edeae2;
@@ -705,5 +705,53 @@ footer{
   .proj-detail{padding:20px 16px 20px 66px}
   .proj-num{font-size:24px;padding:20px 12px}
   .proj-main{padding:20px 16px}
+}
+
+/* ── MATRIX RAIN EASTER EGG ── */
+#matrixOverlay{
+  position:fixed;inset:0;z-index:10000;
+  background:rgba(0,0,0,0.95);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .5s ease;
+  cursor:pointer;
+}
+#matrixOverlay.active{opacity:1;}
+#matrixCanvas{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+}
+.matrix-msg{
+  position:relative;z-index:1;
+  text-align:center;
+  pointer-events:none;
+}
+.matrix-title{
+  font-family:var(--mono);
+  font-size:clamp(24px,4vw,42px);
+  font-weight:700;
+  color:#0f0;
+  text-shadow:0 0 20px rgba(0,255,0,.6),0 0 40px rgba(0,255,0,.3);
+  margin-bottom:16px;
+  animation:matrixGlow 2s ease-in-out infinite;
+}
+.matrix-hint{
+  font-family:var(--mono);
+  font-size:14px;
+  color:rgba(0,255,0,.5);
+  margin-bottom:20px;
+}
+.matrix-code{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:3px;
+  color:rgba(0,255,0,.3);
+  padding:8px 20px;
+  border:1px solid rgba(0,255,0,.15);
+  border-radius:50px;
+  display:inline-block;
+}
+@keyframes matrixGlow{
+  0%,100%{text-shadow:0 0 20px rgba(0,255,0,.6),0 0 40px rgba(0,255,0,.3)}
+  50%{text-shadow:0 0 30px rgba(0,255,0,.9),0 0 60px rgba(0,255,0,.5),0 0 80px rgba(0,255,0,.2)}
 }
 

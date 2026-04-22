@@ -1,4 +1,4 @@
-﻿
+
 // â”€â”€ CUSTOM CURSOR â”€â”€
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
@@ -123,4 +123,169 @@ function sendMsg(){
 
 // Auto-open first project
 toggleProj(0);
+
+// ── SOUND EFFECTS (Web Audio API) ──
+const SFX = (() => {
+  let ctx;
+  function getCtx() {
+    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+    return ctx;
+  }
+  function play(freq, type, dur, vol) {
+    try {
+      const c = getCtx();
+      const osc = c.createOscillator();
+      const gain = c.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, c.currentTime);
+      gain.gain.setValueAtTime(vol, c.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + dur);
+      osc.connect(gain);
+      gain.connect(c.destination);
+      osc.start(c.currentTime);
+      osc.stop(c.currentTime + dur);
+    } catch(e) {}
+  }
+  return {
+    click:  () => play(800, 'sine', 0.08, 0.15),
+    hover:  () => play(1200, 'sine', 0.05, 0.06),
+    toggle: () => play(600, 'triangle', 0.12, 0.1),
+    copy:   () => { play(900, 'sine', 0.06, 0.12); setTimeout(() => play(1200, 'sine', 0.08, 0.12), 70); },
+    submit: () => { play(500, 'sine', 0.1, 0.1); setTimeout(() => play(700, 'sine', 0.1, 0.1), 80); setTimeout(() => play(1000, 'sine', 0.15, 0.12), 160); },
+    matrix: () => { play(200, 'sawtooth', 0.3, 0.08); setTimeout(() => play(150, 'sawtooth', 0.5, 0.06), 150); }
+  };
+})();
+
+// Attach click sounds to all interactive elements
+document.querySelectorAll('a, button, .proj-item, .cert-card').forEach(el => {
+  el.addEventListener('click', () => SFX.click());
+});
+// Attach hover sounds to nav pills and cards
+document.querySelectorAll('.nav-pill, .sb-card, .ach-card, .btn-main, .btn-outline, .btn-hire, .pbtn').forEach(el => {
+  el.addEventListener('mouseenter', () => SFX.hover());
+});
+// Override copy with sound
+const origCopy = window.copyEmail;
+window.copyEmail = function() { SFX.copy(); origCopy(); };
+document.getElementById('copyBtn').onclick = window.copyEmail;
+
+// Override theme toggle with sound
+const origThemeClick = themeBtn.onclick;
+themeBtn.addEventListener('click', () => SFX.toggle(), true);
+
+// Override send message with sound
+const origSend = window.sendMsg;
+window.sendMsg = function() { SFX.submit(); origSend(); };
+
+// ── KONAMI CODE EASTER EGG (Matrix Rain) ──
+(() => {
+  const konamiSeq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let konamiIdx = 0;
+  let matrixActive = false;
+
+  document.addEventListener('keydown', e => {
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if (key === konamiSeq[konamiIdx]) {
+      konamiIdx++;
+      if (konamiIdx === konamiSeq.length) {
+        konamiIdx = 0;
+        if (!matrixActive) startMatrix();
+      }
+    } else {
+      konamiIdx = key === konamiSeq[0] ? 1 : 0;
+    }
+  });
+
+  function startMatrix() {
+    matrixActive = true;
+    SFX.matrix();
+
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'matrixOverlay';
+    overlay.innerHTML = `
+      <canvas id="matrixCanvas"></canvas>
+      <div class="matrix-msg">
+        <div class="matrix-title">You found the easter egg!</div>
+        <div class="matrix-hint">Press ESC or click anywhere to exit</div>
+        <div class="matrix-code">↑ ↑ ↓ ↓ ← → ← → B A</div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => overlay.classList.add('active'));
+
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx2d = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const chars = 'ハムダンカーンHAMDANKHAN01アイウエオカキクケコサシスセソ<>{}[]|/\\+=_-^~';
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    // Randomize initial positions for more organic look
+    for (let i = 0; i < drops.length; i++) {
+      drops[i] = Math.random() * -50;
+    }
+
+    function drawMatrix() {
+      if (!matrixActive) return;
+      ctx2d.fillStyle = 'rgba(0, 0, 0, 0.06)';
+      ctx2d.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        // Gradient green colors
+        const brightness = Math.random();
+        if (brightness > 0.95) {
+          ctx2d.fillStyle = '#fff';
+          ctx2d.shadowColor = '#0f0';
+          ctx2d.shadowBlur = 10;
+        } else if (brightness > 0.8) {
+          ctx2d.fillStyle = '#0f0';
+          ctx2d.shadowBlur = 0;
+        } else {
+          ctx2d.fillStyle = `rgba(0, ${Math.floor(150 + Math.random() * 105)}, 0, ${0.6 + Math.random() * 0.4})`;
+          ctx2d.shadowBlur = 0;
+        }
+
+        ctx2d.font = `${fontSize}px 'JetBrains Mono', monospace`;
+        ctx2d.fillText(char, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+      requestAnimationFrame(drawMatrix);
+    }
+    drawMatrix();
+
+    // Exit handlers
+    function exitMatrix() {
+      matrixActive = false;
+      overlay.classList.remove('active');
+      setTimeout(() => {
+        overlay.remove();
+        window.removeEventListener('resize', resize);
+      }, 500);
+    }
+    overlay.addEventListener('click', exitMatrix);
+    document.addEventListener('keydown', function escHandler(e) {
+      if (e.key === 'Escape') {
+        exitMatrix();
+        document.removeEventListener('keydown', escHandler);
+      }
+    });
+  }
+})();
 
