@@ -9,6 +9,18 @@
 </head>
 <body>
 
+<!-- PAGE LOADER -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-inner">
+    <div class="loader-logo">HK<span>.</span></div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    <div class="loader-text">Loading portfolio...</div>
+  </div>
+</div>
+
+<!-- NOISE OVERLAY -->
+<div class="noise-overlay" id="noiseOverlay"></div>
+
 <!-- PROGRESS BAR -->
 <div class="progress-bar" id="progressBar"></div>
 
@@ -47,6 +59,9 @@
 
 <!-- ─────────────── HERO ─────────────── -->
 <section id="hero">
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
   <div class="hero-left">
     <div class="hero-overline">
       <div class="dot-pulse"></div>
@@ -59,7 +74,7 @@
     </h1>
 
     <p class="hero-bio">
-      Frontend Developer & DSA enthusiast from Bennett University, Greater Noida.
+      I'm a <span class="typed-text" id="typedText">Frontend Developer</span><span class="typed-cursor">|</span> from Bennett University, Greater Noida.
       I build fast, clean interfaces and solve hard algorithmic problems — often at the same time.
     </p>
 
