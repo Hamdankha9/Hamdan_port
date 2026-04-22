@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamdan Khan — Frontend Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMobile()">Home</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">HK<span>.</span></a>
+
+  <div class="nav-center">
+    <a href="#about" class="nav-pill">About</a>
+    <a href="#skills" class="nav-pill">Skills</a>
+    <a href="#projects" class="nav-pill">Projects</a>
+    <a href="#contact" class="nav-pill">Contact</a>
+  </div>
+
+  <div class="nav-right">
+    <button class="btn-theme" id="themeToggle" title="Toggle theme">☀</button>
+    <a href="mailto:khanhamdan8808@gmail.com" class="btn-hire">Hire Me</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─────────────── HERO ─────────────── -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-overline">
+      <div class="dot-pulse"></div>
+      Open to work · Class of 2026
+    </div>
+
+    <h1 class="name">
+      Hamdan
+      <em>Khan.</em>
+    </h1>
+
+    <p class="hero-bio">
+      Frontend Developer & DSA enthusiast from Bennett University, Greater Noida.
+      I build fast, clean interfaces and solve hard algorithmic problems — often at the same time.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn-main">View Projects →</a>
+      <a href="#contact" class="btn-outline">Let's Talk</a>
+      <button class="btn-copy" id="copyBtn" onclick="copyEmail()">
+        <span>✉</span> <span id="copyLabel">Copy Email</span>
+      </button>
+    </div>
+
+    <div class="hero-stats-row reveal">
+      <div class="hero-stat">
+        <span class="hstat-val">8.<b>2</b></span>
+        <div class="hstat-lab">CGPA</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hstat-val">1<b>703</b></span>
+        <div class="hstat-lab">LC Rating</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hstat-val">270<b>+</b></span>
+        <div class="hstat-lab">Solved</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+
+    <div class="floating-tag" style="top:18%;left:12%">📍 Noida, UP</div>
+    <div class="floating-tag" style="bottom:30%;right:10%">🎓 B.Tech CSE '26</div>
+    <div class="floating-tag" style="top:55%;left:8%">⚡ LeetCode 1703</div>
+
+    <div class="code-block">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:#ff5f56"></div>
+        <div class="cb-dot" style="background:#febc2e"></div>
+        <div class="cb-dot" style="background:#28c840"></div>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--ink3);margin-left:8px">hamdan.js</span>
+      </div>
+      <div>
+        <span class="code-kw">const</span> <span class="code-var"> developer</span> = {<br>
+        &nbsp;&nbsp;<span class="code-fn">name</span>: <span class="code-str">"Hamdan Khan"</span>,<br>
+        &nbsp;&nbsp;<span class="code-fn">role</span>: <span class="code-str">"Frontend Developer"</span>,<br>
+        &nbsp;&nbsp;<span class="code-fn">cgpa</span>: <span class="code-str">8.2</span>,<br>
+        &nbsp;&nbsp;<span class="code-fn">leetcode</span>: <span class="code-str">1703</span>,<br>
+        &nbsp;&nbsp;<span class="code-fn">stack</span>: [<span class="code-str">"HTML"</span>, <span class="code-str">"CSS"</span>, <span class="code-str">"JS"</span>],<br>
+        &nbsp;&nbsp;<span class="code-fn">location</span>: <span class="code-str">"Greater Noida"</span>,<br>
+        &nbsp;&nbsp;<span class="code-cm">// available: true ✓</span><br>
+        };
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── ABOUT ─────────────── -->
+<section id="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="about-label">// Who I Am</div>
+      <div class="about-big">Building<br>for the<br><em>web.</em></div>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="about-text">
+        <p>I'm a final-year B.Tech Computer Science student at Bennett University with a passion for frontend development and competitive programming. With a CGPA of 8.2 and a LeetCode contest rating of 1703, I bridge the gap between beautiful interfaces and efficient algorithms.</p>
+        <p>I've built and deployed 3 real-world projects — a task manager, a memory game, and a recipe finder with live API integration. Each taught me something new about performance, usability, and clean code.</p>
+        <p>Currently seeking SDE, frontend developer, or software engineering roles in India starting mid-2026.</p>
+      </div>
+      <div class="about-skills-quick">
+        <span class="aq-chip hot">HTML5</span>
+        <span class="aq-chip hot">CSS3</span>
+        <span class="aq-chip hot">JavaScript</span>
+        <span class="aq-chip">C++</span>
+        <span class="aq-chip">SQL</span>
+        <span class="aq-chip">REST APIs</span>
+        <span class="aq-chip">Git</span>
+        <span class="aq-chip">MySQL</span>
+        <span class="aq-chip">DSA</span>
+        <span class="aq-chip">OOP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── SKILLS ─────────────── -->
+<section id="skills">
+  <div class="section">
+    <div class="section-head reveal">
+      <div class="sh-left">
+        <div class="sh-num">// 01 · Skills</div>
+        <h2 class="sh-title">What I Work With</h2>
+        <div class="sh-line">Technologies, tools & domains</div>
+      </div>
+    </div>
+
+    <div class="skill-filters reveal">
+      <button class="sf-btn active" onclick="filterSkills('all',this)">All</button>
+      <button class="sf-btn" onclick="filterSkills('frontend',this)">Frontend</button>
+      <button class="sf-btn" onclick="filterSkills('lang',this)">Languages</button>
+      <button class="sf-btn" onclick="filterSkills('dsa',this)">DSA</button>
+      <button class="sf-btn" onclick="filterSkills('tools',this)">Tools</button>
+    </div>
+
+    <div class="skills-bento reveal">
+      <div class="sb-card sb-c1" data-cat="frontend">
+        <span class="sb-icon">🎨</span>
+        <div class="sb-name">HTML5 & CSS3</div>
+        <div class="sb-level">Advanced · 88%</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="88"></div></div>
+        <div class="sb-tags"><span class="sb-tag">Flexbox</span><span class="sb-tag">Grid</span><span class="sb-tag">Animations</span></div>
+      </div>
+
+      <div class="sb-card sb-c1" data-cat="frontend lang">
+        <span class="sb-icon">⚡</span>
+        <div class="sb-name">JavaScript</div>
+        <div class="sb-level">Intermediate · 80%</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="80"></div></div>
+        <div class="sb-tags"><span class="sb-tag">ES6+</span><span class="sb-tag">DOM</span><span class="sb-tag">Events</span></div>
+      </div>
+
+      <div class="sb-card sb-c1" data-cat="frontend">
+        <span class="sb-icon">🔗</span>
+        <div class="sb-name">REST APIs</div>
+        <div class="sb-level">Intermediate · 72%</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="72"></div></div>
+        <div class="sb-tags"><span class="sb-tag">Fetch</span><span class="sb-tag">JSON</span><span class="sb-tag">Async</span></div>
+      </div>
+
+      <div class="sb-card sb-c2" data-cat="lang">
+        <span class="sb-icon">🔷</span>
+        <div class="sb-name">C++</div>
+        <div class="sb-level">Strong · 82%</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="82"></div></div>
+        <div class="sb-tags"><span class="sb-tag">STL</span><span class="sb-tag">OOP</span></div>
+      </div>
+
+      <div class="sb-card sb-c2" data-cat="lang">
+        <span class="sb-icon">🗄️</span>
+        <div class="sb-name">SQL & MySQL</div>
+        <div class="sb-level">Intermediate · 70%</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="70"></div></div>
+        <div class="sb-tags"><span class="sb-tag">Queries</span><span class="sb-tag">Joins</span></div>
+      </div>
+
+      <div class="sb-card sb-c3" data-cat="dsa">
+        <span class="sb-icon">🧠</span>
+        <div class="sb-name">Data Structures & Algorithms</div>
+        <div class="sb-level">Advanced · 85% · LeetCode 1703</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="85"></div></div>
+        <div class="sb-tags"><span class="sb-tag">Trees</span><span class="sb-tag">Graphs</span><span class="sb-tag">DP</span><span class="sb-tag">Sorting</span><span class="sb-tag">Hashing</span></div>
+      </div>
+
+      <div class="sb-card sb-c2" data-cat="tools">
+        <span class="sb-icon">🛠️</span>
+        <div class="sb-name">Git & GitHub</div>
+        <div class="sb-level">Proficient · 80%</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="80"></div></div>
+        <div class="sb-tags"><span class="sb-tag">Version Control</span></div>
+      </div>
+
+      <div class="sb-card sb-c2" data-cat="tools">
+        <span class="sb-icon">💻</span>
+        <div class="sb-name">Dev Tools</div>
+        <div class="sb-level">Daily Use</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="78"></div></div>
+        <div class="sb-tags"><span class="sb-tag">VS Code</span><span class="sb-tag">DevTools</span></div>
+      </div>
+
+      <div class="sb-card sb-c3" data-cat="dsa">
+        <span class="sb-icon">📐</span>
+        <div class="sb-name">Core Computer Science</div>
+        <div class="sb-level">CGPA 8.2 · 4 semesters</div>
+        <div class="sb-bar-track"><div class="sb-bar-fill" style="width:0" data-w="84"></div></div>
+        <div class="sb-tags"><span class="sb-tag">DBMS</span><span class="sb-tag">OS</span><span class="sb-tag">Networks</span><span class="sb-tag">OOP</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── PROJECTS ─────────────── -->
+<section id="projects" style="background:var(--surface2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section">
+    <div class="section-head reveal">
+      <div class="sh-left">
+        <div class="sh-num">// 02 · Projects</div>
+        <h2 class="sh-title">Things I've Built</h2>
+      </div>
+      <a href="https://github.com/Hamdankha9" target="_blank" class="btn-outline" style="font-size:13px;padding:10px 22px;">GitHub Profile ↗</a>
+    </div>
+
+    <div class="proj-grid reveal">
+
+      <!-- PROJECT 1 -->
+      <div>
+        <div class="proj-item" onclick="toggleProj(0)">
+          <div class="proj-num">01</div>
+          <div class="proj-main">
+            <div class="proj-title">To-Do List Application</div>
+            <div class="proj-subtitle">HTML · CSS · JavaScript · LocalStorage</div>
+          </div>
+          <div class="proj-arrow">+</div>
+        </div>
+        <div class="proj-detail" id="pd-0">
+          <p class="proj-desc">Intuitive task manager enabling users to add, modify, and delete tasks. Integrated browser LocalStorage for data persistence across sessions — tasks survive page reloads. Optimized performance by minimizing DOM updates and employing event delegation.</p>
+          <div class="proj-features">
+            <div class="pf-item"><span class="pf-icon">✓</span> Add / edit / delete tasks</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> LocalStorage persistence</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> Event delegation pattern</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> Responsive layout</div>
+          </div>
+          <div class="proj-tech-row" style="margin-top:16px">
+            <span class="ptag">HTML5</span><span class="ptag">CSS3</span><span class="ptag">JavaScript</span><span class="ptag">LocalStorage API</span>
+          </div>
+          <div class="proj-btns">
+            <a href="https://github.com/Hamdankha9/To-do-list" target="_blank" class="pbtn pbtn-gh">GitHub →</a>
+            <a href="https://hamdankha9.github.io/To-do-list/" target="_blank" class="pbtn pbtn-live">Live Demo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div>
+        <div class="proj-item" onclick="toggleProj(1)">
+          <div class="proj-num">02</div>
+          <div class="proj-main">
+            <div class="proj-title">Simon Game</div>
+            <div class="proj-subtitle">HTML · CSS · JavaScript · Web Audio API</div>
+          </div>
+          <div class="proj-arrow">+</div>
+        </div>
+        <div class="proj-detail" id="pd-1">
+          <p class="proj-desc">Memory-based game that progressively increases difficulty with colour and sound sequences. Implemented interactive audio-visual feedback for an immersive experience. Refined game logic ensures smooth level transitions and real-time response.</p>
+          <div class="proj-features">
+            <div class="pf-item"><span class="pf-icon">✓</span> Progressive difficulty</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> Sound + visual feedback</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> Smooth state transitions</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> Score tracking</div>
+          </div>
+          <div class="proj-tech-row" style="margin-top:16px">
+            <span class="ptag">HTML5</span><span class="ptag">CSS3</span><span class="ptag">JavaScript</span><span class="ptag">Web Audio API</span>
+          </div>
+          <div class="proj-btns">
+            <a href="https://github.com/Hamdankha9/Simon-Game" target="_blank" class="pbtn pbtn-gh">GitHub →</a>
+            <a href="https://hamdankha9.github.io/Simon-Game/" target="_blank" class="pbtn pbtn-live">Live Demo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div>
+        <div class="proj-item" onclick="toggleProj(2)">
+          <div class="proj-num">03</div>
+          <div class="proj-main">
+            <div class="proj-title">Recipe Finder</div>
+            <div class="proj-subtitle">HTML · CSS · JavaScript · REST API</div>
+          </div>
+          <div class="proj-arrow">+</div>
+        </div>
+        <div class="proj-detail" id="pd-2">
+          <p class="proj-desc">Search-based application retrieving live recipe data from an external API. Implements detailed filtering by cuisine type, ingredients, and dietary restrictions. Optimised API requests for faster responses and seamless browsing.</p>
+          <div class="proj-features">
+            <div class="pf-item"><span class="pf-icon">✓</span> Live API integration</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> Cuisine & diet filters</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> Optimised API calls</div>
+            <div class="pf-item"><span class="pf-icon">✓</span> Clean search UX</div>
+          </div>
+          <div class="proj-tech-row" style="margin-top:16px">
+            <span class="ptag">HTML5</span><span class="ptag">CSS3</span><span class="ptag">JavaScript</span><span class="ptag">REST API</span><span class="ptag">JSON</span>
+          </div>
+          <div class="proj-btns">
+            <a href="https://github.com/Hamdankha9/Recipe-Finder" target="_blank" class="pbtn pbtn-gh">GitHub →</a>
+            <a href="https://github.com/Hamdankha9/Recipe-Finder" target="_blank" class="pbtn pbtn-live">Live Demo ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── ACHIEVEMENTS ─────────────── -->
+<section id="achievements">
+  <div class="section">
+    <div class="section-head reveal">
+      <div class="sh-left">
+        <div class="sh-num">// 03 · Achievements</div>
+        <h2 class="sh-title">By the Numbers</h2>
+      </div>
+    </div>
+
+    <div class="ach-bento reveal">
+      <div class="ach-card">
+        <div class="ach-label">LeetCode Peak Rating</div>
+        <div class="ach-val">1<b>703</b></div>
+        <div class="ach-sub">Competitive programming contests — Weekly & Biweekly participation</div>
+        <div class="ach-badge">Top Coder</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-label">Problems Solved</div>
+        <div class="ach-val">270<b>+</b></div>
+        <div class="ach-sub">On LeetCode alone · 475+ across all platforms</div>
+        <div class="ach-badge">Multi-Platform</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-label">Academic CGPA</div>
+        <div class="ach-val">8.<b>2</b></div>
+        <div class="ach-sub">B.Tech CSE · Bennett University · 2022–2026</div>
+        <div class="ach-badge">Consistent</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-label">Class 12th CBSE</div>
+        <div class="ach-val">85<b>.6%</b></div>
+        <div class="ach-sub">Kendriya Vidyalaya Lucknow · 2020–2021</div>
+        <div class="ach-badge">CBSE</div>
+      </div>
+    </div>
+
+    <!-- EDUCATION + CERTS -->
+    <div class="edu-cert-grid" style="margin-top:56px">
+      <div class="reveal">
+        <div class="ec-title">Education</div>
+        <div class="edu-card">
+          <div class="edu-icon uni">🎓</div>
+          <div>
+            <div class="edu-year">2022 — 2026</div>
+            <div class="edu-deg">B.Tech — Computer Science</div>
+            <div class="edu-org">Bennett University, Greater Noida</div>
+          </div>
+          <div class="edu-score">8.2</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon school">📚</div>
+          <div>
+            <div class="edu-year">2020 — 2021</div>
+            <div class="edu-deg">Class 12th — CBSE</div>
+            <div class="edu-org">Kendriya Vidyalaya Lucknow</div>
+          </div>
+          <div class="edu-score" style="font-size:18px">85.6%</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d1">
+        <div class="ec-title">Certifications</div>
+        <a href="#" class="cert-card">
+          <div class="cert-icon">📊</div>
+          <div>
+            <div class="cert-name">Algorithmic Toolbox</div>
+            <div class="cert-provider">Coursera</div>
+          </div>
+          <div class="cert-arrow">→</div>
+        </a>
+        <a href="#" class="cert-card">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">Bits and Bytes of Computer Networking</div>
+            <div class="cert-provider">Google</div>
+          </div>
+          <div class="cert-arrow">→</div>
+        </a>
+        <a href="https://leetcode.com" target="_blank" class="cert-card">
+          <div class="cert-icon">⚡</div>
+          <div>
+            <div class="cert-name">LeetCode Profile</div>
+            <div class="cert-provider">270+ solved · Rating 1703</div>
+          </div>
+          <div class="cert-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── CONTACT ─────────────── -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="reveal">
+      <div class="contact-eyebrow">// 04 · Contact</div>
+      <h2 class="contact-head">Let's build<br>something<br><em>great.</em></h2>
+      <p class="contact-p">I'm actively looking for frontend developer, SDE trainee, and entry-level software engineering roles across India. Open to full-time, internship, and freelance opportunities.</p>
+
+      <div class="contact-links">
+        <a href="mailto:khanhamdan8808@gmail.com" class="clink">
+          <div class="clink-icon">✉</div>
+          <div><span class="clink-label">Email</span><span>khanhamdan8808@gmail.com</span></div>
+        </a>
+        <a href="tel:+918423210299" class="clink">
+          <div class="clink-icon">📞</div>
+          <div><span class="clink-label">Phone</span><span>+91 84232 10299</span></div>
+        </a>
+        <a href="https://linkedin.com/in/hamdankhan" target="_blank" class="clink">
+          <div class="clink-icon">in</div>
+          <div><span class="clink-label">LinkedIn</span><span>linkedin.com/in/hamdankhan</span></div>
+        </a>
+        <a href="https://github.com/Hamdankha9" target="_blank" class="clink">
+          <div class="clink-icon">⌥</div>
+          <div><span class="clink-label">GitHub</span><span>github.com/Hamdankha9</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal reveal-d2">
+      <div class="contact-form" id="contactForm">
+        <div class="cf-group">
+          <label class="cf-label">Your Name</label>
+          <input type="text" class="cf-input" placeholder="John Doe" id="cf-name">
+        </div>
+        <div class="cf-group">
+          <label class="cf-label">Your Email</label>
+          <input type="email" class="cf-input" placeholder="you@company.com" id="cf-email">
+        </div>
+        <div class="cf-group">
+          <label class="cf-label">Message</label>
+          <textarea class="cf-input" placeholder="Tell me about the role…" id="cf-msg"></textarea>
+        </div>
+        <button class="cf-submit" onclick="sendMsg()">
+          Send Message <span>→</span>
+        </button>
+        <div class="cf-success" id="cfSuccess">
+          ✓ Message ready! Opening your email client…
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 Hamdan Khan · Built with vanilla HTML/CSS/JS</div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/hamdankhan" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Hamdankha9" target="_blank">GitHub</a>
+    <a href="https://leetcode.com" target="_blank">LeetCode</a>
+    <a href="mailto:khanhamdan8808@gmail.com">Email</a>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+
+<script src="script.js"></script>
+</body>
+</html>
